@@ -76,12 +76,12 @@ export default function ConsultingPage() {
             >
               <div className="photo-editorial relative rounded-[22px] overflow-hidden bg-ink aspect-[4/5]">
                 <Image
-                  src="/heath-headshot.jpg"
-                  alt="Heath Shearon — consultant and host"
+                  src="/heath-consulting.jpg"
+                  alt="Heath Shearon advising a client team in a boardroom"
                   fill
                   sizes="(max-width: 1024px) 100vw, 560px"
                   className="object-cover"
-                  style={{ objectPosition: "70% 40%" }}
+                  style={{ objectPosition: "50% 35%" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 plaque rounded-md px-4 py-2">

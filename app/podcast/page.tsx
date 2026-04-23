@@ -91,14 +91,14 @@ export default async function PodcastPage() {
                     "linear-gradient(135deg, #f6d97a 0%, #e8c14a 45%, #9e7b1c 100%)",
                 }}
               >
-                <div className="relative rounded-[14px] overflow-hidden bg-ink">
+                <div className="photo-editorial relative rounded-[14px] overflow-hidden bg-ink aspect-[16/10]">
                   <Image
-                    src="/heath-banner.png"
-                    alt="Heath Shearon in the many moods of the Insurance Town podcast"
-                    width={2500}
-                    height={500}
+                    src="/heath-studio.jpg"
+                    alt="Heath Shearon recording in the Insurance Town studio"
+                    fill
                     sizes="(max-width: 1024px) 100vw, 960px"
-                    className="w-full h-auto"
+                    className="object-cover"
+                    style={{ objectPosition: "50% 40%" }}
                     priority
                   />
                 </div>

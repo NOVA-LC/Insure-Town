@@ -114,11 +114,12 @@ export default function SpeakingPage() {
             >
               <div className="relative rounded-[22px] overflow-hidden bg-gradient-to-br from-ink to-ink-2 aspect-[4/5]">
                 <Image
-                  src="/heath-speaking.png"
+                  src="/heath-stage.jpg"
                   alt="Heath Shearon on stage, delivering a keynote"
                   fill
                   sizes="(max-width: 1024px) 100vw, 560px"
-                  className="object-cover object-top"
+                  className="object-cover"
+                  style={{ objectPosition: "50% 25%" }}
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />

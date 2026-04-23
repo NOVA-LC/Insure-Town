@@ -36,12 +36,12 @@ export default function CitizenPage() {
             >
               <div className="photo-editorial relative rounded-[22px] overflow-hidden bg-ink aspect-square">
                 <Image
-                  src="/heath-headshot.jpg"
-                  alt="Heath Shearon"
+                  src="/heath-kitchen.jpg"
+                  alt="Heath Shearon talking with a family at the kitchen table"
                   fill
                   sizes="(max-width: 768px) 100vw, 320px"
                   className="object-cover"
-                  style={{ objectPosition: "70% 40%" }}
+                  style={{ objectPosition: "50% 30%" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
               </div>
