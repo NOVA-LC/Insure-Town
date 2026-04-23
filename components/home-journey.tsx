@@ -1067,7 +1067,7 @@ function ActOneOverlay({ progress }: { progress: MotionValue<number> }) {
             href={content.latest_episode.apple}
             target="_blank"
             rel="noreferrer"
-            className="group mt-7 inline-flex items-center gap-3 rounded-full border border-brass/35 bg-ink/60 px-4 py-2 backdrop-blur-sm hover:border-brass/60 hover:bg-ink/80 transition-colors"
+            className="group mt-7 inline-flex items-center gap-3 rounded-full bg-ink/35 px-4 py-2 backdrop-blur-md ring-1 ring-white/5 hover:ring-brass/40 hover:bg-ink/55 transition-all"
           >
             <span className="grid place-items-center h-7 w-7 rounded-full bg-brass text-ink">
               <Play className="h-3 w-3 fill-ink" strokeWidth={0} />
