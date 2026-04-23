@@ -1311,13 +1311,14 @@ function ActFiveOverlay({ progress }: { progress: MotionValue<number> }) {
 function ActSixOverlay({ progress }: { progress: MotionValue<number> }) {
   return (
     <ActOverlay progress={progress} range={[0.88, 0.92, 0.98, 1]} align="top">
-      <span className="ornament">Broadcast anywhere · Citizens in 50 states</span>
+      <span className="ornament">Wherever the work is</span>
       <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">
         <span className="brass-engraved">Insurance Town goes with you.</span>
       </h2>
       <p className="mx-auto mt-4 max-w-xl text-parchment/75">
-        From agency kitchens in Kansas to boardrooms in New York — wherever
-        there's an insurance pro who wants to serve better.
+        Wherever there's an insurance pro who wants to serve better,
+        Insurance Town shows up in the earbuds, on the stage, and in the
+        inbox.
       </p>
       <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.3em] text-brass/80 anim-float">
         ↓ Land the shuttle
