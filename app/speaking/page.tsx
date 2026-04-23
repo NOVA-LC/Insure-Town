@@ -165,6 +165,47 @@ export default function SpeakingPage() {
             ))}
           </ul>
 
+          {/* From the road — real event photos */}
+          <div className="mt-20">
+            <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
+              <div>
+                <span className="ornament">From the road</span>
+                <h3 className="mt-4 font-display text-2xl md:text-3xl">
+                  Real rooms. Real audiences.
+                </h3>
+              </div>
+              <p className="max-w-md text-sm text-parchment/60">
+                A few recent stops — agency conferences, PIA events, and
+                industry stages where Heath shows up the same way he does
+                on the mic.
+              </p>
+            </div>
+            <ul role="list" className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {[
+                { src: "/heath-stage-2.jpg", alt: "Heath speaking, audience filming", caption: "Keynote · industry event" },
+                { src: "/heath-stage-3.jpg", alt: "Heath on stage in navy suit", caption: "Stage · conference room" },
+                { src: "/heath-spotlight.webp", alt: "Heath at The Spotlight stage in orange blazer", caption: "The Spotlight · live" },
+                { src: "/heath-friends.jpg", alt: "Heath with fellow agents at a PIA event", caption: "PIA · backstage" },
+              ].map((p, i) => (
+                <li key={i} className="group">
+                  <div className="photo-editorial relative rounded-xl overflow-hidden bg-ink aspect-[3/4] ring-1 ring-brass/20 group-hover:ring-brass/45 transition">
+                    <Image
+                      src={p.src}
+                      alt={p.alt}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
+                  </div>
+                  <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.22em] text-parchment/55">
+                    {p.caption}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           <div className="mt-14 card-storefront rounded-2xl p-8 md:p-10 flex flex-wrap gap-6 items-center justify-between">
             <div>
               <span className="ornament">Custom</span>
