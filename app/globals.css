@@ -56,8 +56,8 @@
   }
 
   ::selection {
-    background: #e8c14a;
-    color: #0b1424;
+    background: rgba(232, 193, 74, 0.3);
+    color: inherit;
   }
 
   h1,

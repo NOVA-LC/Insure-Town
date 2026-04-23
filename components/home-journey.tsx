@@ -1108,27 +1108,55 @@ function ActOneOverlay({ progress }: { progress: MotionValue<number> }) {
             </p>
             <ul
               role="list"
-              className="mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-parchment/70"
+              className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-parchment/70"
             >
-              <li className="inline-flex items-center gap-2 text-sm">
-                <Apple className="h-4 w-4 text-parchment/80" aria-hidden />
-                <span>Apple Podcasts</span>
-              </li>
-              <li aria-hidden className="h-1 w-1 rounded-full bg-parchment/25" />
-              <li className="inline-flex items-center gap-2 text-sm">
-                <Music className="h-4 w-4 text-parchment/80" aria-hidden />
-                <span>Spotify</span>
-              </li>
-              <li aria-hidden className="h-1 w-1 rounded-full bg-parchment/25" />
-              <li className="inline-flex items-center gap-2 text-sm">
-                <Youtube className="h-4 w-4 text-parchment/80" aria-hidden />
-                <span>YouTube</span>
+              <li>
+                <a
+                  href={content.latest_episode.apple}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full px-2 py-2 text-sm hover:text-brass-light transition-colors"
+                >
+                  <Apple className="h-4 w-4" aria-hidden />
+                  <span>Apple Podcasts</span>
+                </a>
               </li>
               <li aria-hidden className="hidden sm:block h-1 w-1 rounded-full bg-parchment/25" />
-              <li className="inline-flex items-center gap-1.5 text-sm">
-                <Star className="h-3.5 w-3.5 fill-brass text-brass" aria-hidden />
-                <span className="font-medium text-parchment/90">4.8</span>
-                <span className="text-parchment/50">on Apple</span>
+              <li>
+                <a
+                  href={content.latest_episode.spotify}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full px-2 py-2 text-sm hover:text-brass-light transition-colors"
+                >
+                  <Music className="h-4 w-4" aria-hidden />
+                  <span>Spotify</span>
+                </a>
+              </li>
+              <li aria-hidden className="hidden sm:block h-1 w-1 rounded-full bg-parchment/25" />
+              <li>
+                <a
+                  href={content.latest_episode.youtube}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full px-2 py-2 text-sm hover:text-brass-light transition-colors"
+                >
+                  <Youtube className="h-4 w-4" aria-hidden />
+                  <span>YouTube</span>
+                </a>
+              </li>
+              <li aria-hidden className="hidden sm:block h-1 w-1 rounded-full bg-parchment/25" />
+              <li>
+                <a
+                  href={content.latest_episode.apple}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-full px-2 py-2 text-sm hover:text-brass-light transition-colors"
+                >
+                  <Star className="h-3.5 w-3.5 fill-brass text-brass" aria-hidden />
+                  <span className="font-medium text-parchment/90">4.8</span>
+                  <span className="text-parchment/55">on Apple</span>
+                </a>
               </li>
             </ul>
           </div>
