@@ -107,6 +107,17 @@ export function Footer() {
             © {year} {brand.name}
           </span>
           <span>Serve better · Sell smarter · Lead with heart</span>
+          <span>
+            Designed by{" "}
+            <a
+              href="https://gonenova.com"
+              target="_blank"
+              rel="noreferrer"
+              className="text-brass/80 hover:text-brass-light transition-colors"
+            >
+              GoneNova
+            </a>
+          </span>
         </div>
       </div>
     </footer>
