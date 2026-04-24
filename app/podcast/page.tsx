@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Apple, Music, Youtube, Rss } from "lucide-react";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { PageHeader } from "@/components/page-header";
+import {
+  AppleBadge,
+  SpotifyBadge,
+  YouTubeBadge,
+  RssBadge,
+} from "@/components/platform-badges";
 import { fetchEpisodes } from "@/lib/rss";
 import { content } from "@/lib/content";
 import { formatDate } from "@/lib/utils";
@@ -30,42 +35,10 @@ export default async function PodcastPage() {
         description="Weekly conversations that make insurance human. Independent agents, carriers, tech founders, and industry veterans telling the stories the trade press won't."
       >
         <div className="flex flex-wrap gap-3">
-          <a
-            href={latest.apple}
-            target="_blank"
-            rel="noreferrer"
-            className="btn-brass inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium"
-          >
-            <Apple className="h-4 w-4" />
-            Apple Podcasts
-          </a>
-          <a
-            href={latest.spotify}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-[#1DB954] text-black px-5 py-3 text-sm font-medium hover:brightness-110"
-          >
-            <Music className="h-4 w-4" />
-            Spotify
-          </a>
-          <a
-            href={latest.youtube}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-[#FF0000] text-white px-5 py-3 text-sm font-medium hover:brightness-110"
-          >
-            <Youtube className="h-4 w-4" />
-            YouTube
-          </a>
-          <a
-            href={content.episodes_feed.rss}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-brass/40 px-5 py-3 text-sm text-parchment/80 hover:bg-white/5"
-          >
-            <Rss className="h-4 w-4 text-brass" />
-            RSS
-          </a>
+          <AppleBadge href={latest.apple} />
+          <SpotifyBadge href={latest.spotify} />
+          <YouTubeBadge href={latest.youtube} />
+          <RssBadge href={content.episodes_feed.rss} />
         </div>
       </PageHeader>
 
@@ -158,11 +131,18 @@ export default async function PodcastPage() {
                         {formatDate(ep.pubDate)}
                         {ep.duration ? ` · ${ep.duration}` : ""}
                       </p>
-                      <h3 className="mt-2 font-display text-lg leading-snug line-clamp-3 text-parchment group-hover:text-brass-light transition-colors">
+                      <h3
+                        title={ep.title}
+                        aria-label={ep.title}
+                        className="mt-2 font-display text-lg leading-snug title-clamp-3 text-parchment group-hover:text-brass-light transition-colors"
+                      >
                         {ep.title}
                       </h3>
                       {ep.description ? (
-                        <p className="mt-3 text-[13px] text-parchment/60 line-clamp-2">
+                        <p
+                          title={ep.description}
+                          className="mt-3 text-[13px] text-parchment/60 title-clamp-2"
+                        >
                           {ep.description}
                         </p>
                       ) : null}

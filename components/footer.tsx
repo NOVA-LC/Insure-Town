@@ -95,7 +95,7 @@ export function Footer() {
                   rel="noreferrer"
                   className="block py-2.5 min-h-11 text-parchment/70 hover:text-brass-light transition-colors"
                 >
-                  Book the Mayor
+                  Book Heath to Speak
                 </a>
               </li>
             </ul>

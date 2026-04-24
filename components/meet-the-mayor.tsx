@@ -57,20 +57,20 @@ export function MeetTheMayor() {
                 "radial-gradient(closest-side, rgba(201,162,74,0.35), transparent)",
             }}
           />
-          {/* Outer brass frame */}
+          {/* Outer brass frame — Main Street gold, not old cosmic brass */}
           <div
             className="relative rounded-3xl p-[3px]"
             style={{
               background:
-                "linear-gradient(135deg, #f3dd9e 0%, #c9a24a 45%, #5a4416 100%)",
+                "linear-gradient(135deg, #f4d07a 0%, #d4a84b 45%, #8a6a1a 100%)",
             }}
           >
-            {/* Inner frame */}
+            {/* Inner frame — dusk navy */}
             <div
               className="rounded-[20px] p-3"
               style={{
                 background:
-                  "linear-gradient(180deg, #1a1410 0%, #0b1220 100%)",
+                  "linear-gradient(180deg, #1b2a4e 0%, #0f1a35 100%)",
               }}
             >
               {/* Corner nail-heads */}
@@ -118,49 +118,35 @@ export function MeetTheMayor() {
           </div>
         </motion.div>
 
-        {/* ── Bio + stats ─────────────────────────────────────── */}
+        {/* ── Bio paragraphs ──────────────────────────────────── */}
         <div className="lg:col-span-7">
           <span className="ornament">Meet the Mayor</span>
-          <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-[3.75rem] leading-[1.02]">
-            Bringing{" "}
-            <span className="font-script italic text-brass-light font-normal">
-              heart
-            </span>{" "}
-            <span className="brass-engraved">back to insurance.</span>
+          <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-[3.75rem] leading-[1.02] brass-engraved">
+            Bringing heart back to insurance.
           </h2>
 
-          <p className="drop-cap mt-8 text-base md:text-lg text-parchment/78 leading-[1.75] max-w-2xl">
-            {content.bio}
-          </p>
-
-          <dl className="mt-10 grid grid-cols-3 gap-4">
-            {content.stats.map((s) => (
-              <div
-                key={s.label}
-                className="relative rounded-xl p-5 text-center plaque"
-              >
-                <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink/70">
-                  {s.label}
-                </dt>
-                <dd className="mt-2 font-display text-3xl md:text-4xl text-ink">
-                  {s.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-
-          <div className="mt-9 flex flex-wrap gap-3">
-            <a
-              href="https://calendly.com/mayorheath/itp2024"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-primary inline-flex items-center rounded-full px-5 py-3 text-sm font-medium"
+          {content.bio.split("\n\n").map((para, i) => (
+            <p
+              key={i}
+              className={`text-base md:text-lg text-parchment/80 leading-[1.75] max-w-2xl ${
+                i === 0 ? "drop-cap mt-8" : "mt-5"
+              }`}
             >
-              Book a conversation
+              {para}
+            </p>
+          ))}
+
+          <div className="mt-10 flex flex-wrap gap-3">
+            <a
+              href="/about"
+              className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-[0.22em] text-brass hover:text-brass-light"
+            >
+              Read full about →
             </a>
+            <span aria-hidden className="text-parchment/20">·</span>
             <a
               href="mailto:Heath@insurancetownpodcast.com"
-              className="inline-flex items-center rounded-full border border-brass/40 px-5 py-3 text-sm font-medium hover:bg-white/5"
+              className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-[0.22em] text-parchment/70 hover:text-parchment"
             >
               Email Heath
             </a>

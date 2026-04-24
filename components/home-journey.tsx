@@ -85,18 +85,22 @@ export function HomeJourney() {
             <OrbitPlanet progress={p} />
           </BlurStage>
           <HudFrame />
+
+          {/* Overlays live INSIDE the sticky stage so they only occupy
+              viewport when the journey section is actually on screen.
+              (Previously `fixed inset-0` which rendered them across the
+              whole page and overlapped the hero.) */}
+          <ActOneOverlay progress={p} />
+          <ActTwoOverlay progress={p} />
+          <ActThreeOverlay progress={p} />
+          <ActFourOverlay progress={p} />
+          <ActFiveOverlay progress={p} />
+          <ActSixOverlay progress={p} />
+
+          {/* Progress rail — inside the sticky stage so it also sticks in view
+              only while the journey is on screen. */}
+          <ProgressRail progress={p} />
         </div>
-
-        {/* ── Progress rail (left side) ──────────────────────── */}
-        <ProgressRail progress={p} />
-
-        {/* ── Scroll-linked text overlays, ONE per act ──────── */}
-        <ActOneOverlay progress={p} />
-        <ActTwoOverlay progress={p} />
-        <ActThreeOverlay progress={p} />
-        <ActFourOverlay progress={p} />
-        <ActFiveOverlay progress={p} />
-        <ActSixOverlay progress={p} />
 
         {/* ── Scroll cue (hero only, hidden on small screens where it overlaps CTAs) ───── */}
         <motion.div
@@ -130,15 +134,20 @@ const ACTS = [
 ];
 
 function ProgressRail({ progress }: { progress: MotionValue<number> }) {
+  /* Only visible while the journey section is actually on screen.
+     Previously `fixed` + always-rendered meant the rail showed on the
+     hero + meet-the-mayor too, which was confusing. */
+  const railOpacity = useTransform(progress, [0, 0.02, 0.98, 1], [0, 1, 1, 0]);
   return (
-    <nav
+    <motion.nav
+      style={{ opacity: railOpacity }}
       aria-label="Journey progress"
-      className="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 z-40 flex-col items-start gap-4"
+      className="pointer-events-none hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-40 flex-col items-start gap-4"
     >
       {ACTS.map((act, i) => (
         <RailDot key={act.key} index={i} act={act} progress={progress} />
       ))}
-    </nav>
+    </motion.nav>
   );
 }
 
@@ -152,25 +161,28 @@ function RailDot({
   progress: MotionValue<number>;
 }) {
   const [lo, hi] = act.range;
-  const opacity = useTransform(progress, [lo - 0.04, lo, hi, hi + 0.04], [0.4, 1, 1, 0.4]);
+  /* WCAG: inactive labels hit 0.7 opacity (~5:1 contrast on dusk navy).
+     Active hits 1.0 + bold weight. */
+  const opacity = useTransform(progress, [lo - 0.04, lo, hi, hi + 0.04], [0.7, 1, 1, 0.7]);
   const scale   = useTransform(progress, [lo - 0.04, lo, hi, hi + 0.04], [1, 1.3, 1.3, 1]);
   const width   = useTransform(progress, [lo, hi], [6, 36]);
+  const weight  = useTransform(progress, [lo, hi], [500, 700]);
   return (
     <div className="flex items-center gap-3 group">
       <motion.span
         style={{ opacity, scale }}
-        className="relative block h-[6px] rounded-full bg-brass"
+        className="relative block h-[6px] rounded-full bg-lamp"
       >
         <motion.span
           style={{ width }}
-          className="block h-full rounded-full bg-brass"
+          className="block h-full rounded-full bg-lamp"
         />
       </motion.span>
       <motion.span
-        style={{ opacity }}
-        className="font-mono text-[10px] uppercase tracking-[0.22em] text-brass"
+        style={{ opacity, fontWeight: weight }}
+        className="font-mono text-[10px] uppercase tracking-[0.22em] text-lamp"
       >
-        <span className="text-parchment/50 mr-2">{String(index + 1).padStart(2, "0")}</span>
+        <span className="text-parchment/75 mr-2">{String(index + 1).padStart(2, "0")}</span>
         {act.label}
       </motion.span>
     </div>
@@ -883,12 +895,12 @@ function OrbitPlanet({ progress }: { progress: MotionValue<number> }) {
           href="https://calendly.com/mayorheath/itp2024"
           target="_blank"
           rel="noreferrer"
-          aria-label="Book the Mayor"
+          aria-label="Book Heath to speak"
           className="pointer-events-auto absolute left-1/2 -translate-x-1/2 bottom-[-6%] group"
         >
           <span className="flex items-center gap-2 min-h-11 plaque rounded-full px-5 font-mono text-[10px] uppercase tracking-[0.25em] shadow-[0_12px_36px_-10px_rgba(201,162,74,0.7)] group-hover:scale-[1.04] transition-transform">
             <Play className="h-3 w-3 fill-ink" strokeWidth={0} />
-            Book the Mayor
+            Book Heath to Speak
           </span>
           <span
             aria-hidden="true"
@@ -997,7 +1009,7 @@ function ActOverlay({
   return (
     <motion.div
       style={{ opacity, y }}
-      className={`pointer-events-none fixed inset-0 z-20 flex ${alignClass} justify-center px-6`}
+      className={`pointer-events-none absolute inset-0 z-20 flex ${alignClass} justify-center px-6`}
     >
       <div className="pointer-events-auto w-full max-w-5xl 2xl:max-w-[72rem] text-center">{children}</div>
     </motion.div>
@@ -1075,7 +1087,11 @@ function ActOneOverlay({ progress }: { progress: MotionValue<number> }) {
             <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-brass">
               Latest · Ep {content.latest_episode.number}
             </span>
-            <span className="text-sm text-parchment/85 group-hover:text-parchment line-clamp-1 max-w-[40ch]">
+            <span
+              title={content.latest_episode.title}
+              aria-label={content.latest_episode.title}
+              className="text-sm text-parchment/85 group-hover:text-parchment title-clamp-2 max-w-[40ch]"
+            >
               {content.latest_episode.title}
             </span>
           </a>
@@ -1089,7 +1105,7 @@ function ActOneOverlay({ progress }: { progress: MotionValue<number> }) {
               className="btn-primary inline-flex items-center gap-2 rounded-full px-6 py-3.5 font-medium"
             >
               <Play className="h-4 w-4" />
-              Book the Mayor
+              Book Heath to Speak
             </a>
             <Link
               href="/podcast"
@@ -1182,16 +1198,6 @@ function ActTwoOverlay({ progress }: { progress: MotionValue<number> }) {
           20+ years in the industry. 329 episodes and counting. One stubborn
           belief Heath keeps coming back to: service always wins.
         </p>
-        <dl className="mt-6 flex flex-wrap justify-center gap-3">
-          {content.stats.map((s) => (
-            <div key={s.label} className="plaque rounded-md px-4 py-2">
-              <dt className="font-mono text-[9px] uppercase tracking-[0.22em] text-ink/70">
-                {s.label}
-              </dt>
-              <dd className="font-display text-xl text-ink">{s.value}</dd>
-            </div>
-          ))}
-        </dl>
       </div>
     </ActOverlay>
   );
@@ -1358,7 +1364,7 @@ function FinaleLanding() {
           {/* Four huge CTAs */}
           <div className="mt-14 grid md:grid-cols-2 gap-5">
             <FinaleCard
-              eyebrow="Book the Mayor"
+              eyebrow="Book Heath to Speak"
               title="A private call with Heath."
               blurb="Consulting, stage bookings, or a straight-up 'help me figure this out' session. Heath runs these personally — no sales team."
               href="https://calendly.com/mayorheath/itp2024"

@@ -80,7 +80,11 @@ export async function RecentEpisodes() {
                     <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-parchment/55">
                       {formatDate(ep.pubDate)} · {ep.duration}
                     </p>
-                    <h3 className="mt-2 font-display text-lg leading-snug line-clamp-3">
+                    <h3
+                      title={ep.title}
+                      aria-label={ep.title}
+                      className="mt-2 font-display text-lg leading-snug title-clamp-3"
+                    >
                       {ep.title}
                     </h3>
                   </div>

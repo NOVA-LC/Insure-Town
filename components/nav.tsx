@@ -15,8 +15,8 @@ const NAV_LINKS = [
 ];
 
 const primaryCta = {
-  label: "Book the Mayor",
-  href: "https://calendly.com/mayorheath/itp2024",
+  label: "Listen",
+  href: "https://podcasts.apple.com/us/podcast/insurance-town/id1507463491",
 };
 
 export function Nav() {

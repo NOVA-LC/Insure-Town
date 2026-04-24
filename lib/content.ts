@@ -22,6 +22,7 @@ type Stat = { label: string; value: string };
 
 export const content: {
   bio: string;
+  bio_preview: string;
   stats: Stat[];
   services: Service[];
   latest_episode: {
@@ -50,7 +51,9 @@ export const content: {
   };
 } = {
   bio:
-    "Heath Shearon — podcaster, speaker, and servant-hearted leader bringing heart back to insurance. With over 20 years in the industry, Heath built his career on the value-add. Always looking to lead and grow 'out of service' because at the end of the day... service always wins. A former agent turned storyteller, he's helped countless insurance professionals grow through authentic relationships, smarter tech, and a service-first mindset. As host of the Insurance Town Podcast and a national keynote speaker, Heath brings humor, humility, and hard-earned wisdom to every conversation, challenging the industry to serve better, sell smarter, and lead with heart. Step inside Insurance Town, where service meets success.",
+    "Heath Shearon — aka \u201CThe Mayor of Insurance Town\u201D — is a second-generation insurance professional with nearly two decades of experience spanning agency sales, carrier marketing, and consulting. He is the creator and host of the popular Insurance Town podcast, which launched in 2020 and has released over 329 weekly episodes featuring candid, insightful conversations designed to help insurance professionals grow, learn, and connect.\n\nKnown for his high-energy style, humor, and storytelling, Heath is a nationally recognized speaker and thought leader. He\u2019s been featured in Rough Notes, collaborates with leading industry sponsors like Smart Choice, Canopy Connect, and Cover Desk, and also serves as a performance coach with Agency Performance Partners.\n\nWhether behind the mic or in front of an audience, Heath is on a mission to make the insurance industry feel more like a community — one podcast, one handshake, and one conversation at a time.",
+  bio_preview:
+    "Second-generation insurance pro, creator of the Insurance Town podcast, and a nationally recognized speaker on a mission to make the insurance industry feel more like a community — one conversation at a time.",
   stats: [
     { label: "Episodes", value: "329+" },
     { label: "Years in Insurance", value: "20+" },
@@ -107,9 +110,13 @@ export const content: {
   },
   ctas: [
     {
-      label: "Book the Mayor",
-      href: "https://calendly.com/mayorheath/itp2024",
+      label: "Listen on Apple Podcasts",
+      href: "https://podcasts.apple.com/us/podcast/insurance-town/id1507463491",
       primary: true,
+    },
+    {
+      label: "Book Heath to Speak",
+      href: "https://calendly.com/mayorheath/itp2024",
     },
     {
       label: "Listen on Apple",

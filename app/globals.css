@@ -1,22 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  /* Heath's actual podcast palette: deep navy, bright yellow-gold, clean white.
-     Avoid purples/plums (reads "wizard") and muted olive-gold (reads "old-timey"). */
-  --color-ink: #0b1424;
-  --color-ink-2: #111c36;
-  --color-plum: #0f1a30;        /* was plum — now deep navy */
-  --color-ember: #b45a2a;       /* toned down from burgundy to warm orange */
-  --color-amber: #e89b3a;
-  --color-parchment: #f5f7fa;   /* clean near-white instead of cream */
-  --color-parchment-2: #e7ecf4;
-  --color-mayor-red: #c8372d;
+  /* Main Street at dusk — warm American small-town palette.
+     Replaces the prior cosmic/nebula direction. Heath's brand is
+     clock tower + streetlamp + church steeple, not galaxy. */
+  --color-ink: #1b2a4e;         /* dusk navy — warmer than near-black */
+  --color-ink-2: #3d4e7a;       /* dusty blue */
+  --color-horizon: #e8a87c;     /* warm peach horizon */
+  --color-lamp: #f4b860;        /* streetlamp amber */
+  --color-window: #ffd97d;      /* interior window yellow */
+  --color-window-warm: #f6c453; /* richer amber variant */
+  --color-brick: #a0522d;       /* warm brick / sienna */
+  --color-brick-shadow: #6b3410;
+  --color-wood: #8b6f47;        /* weathered wood sign */
+  --color-storefront: #f5e6d3;  /* painted trim cream */
+  --color-storefront-teal: #4a6670;
+  --color-parchment: #fbf3e0;   /* warm off-white for body text on dark */
+  --color-parchment-2: #efe4c6;
+  --color-mayor-red: #c8372d;   /* retained — anchor CTA red */
   --color-mayor-red-2: #8f241c;
-  --color-brass: #e8c14a;       /* brighter yellow-gold, matches podcast cover */
-  --color-brass-light: #f6d97a;
-  --color-brass-deep: #9e7b1c;
+  --color-brass: #d4a84b;       /* gold key — matches his real logo */
+  --color-brass-light: #f4d07a;
+  --color-brass-deep: #8a6a1a;
   --color-sky: #5aa7d0;
-  --color-shadow: #070c18;
+  --color-shadow: #0c1428;
+  /* Back-compat aliases so existing classes keep working during rebuild */
+  --color-plum: #1b2a4e;
+  --color-ember: #a0522d;
+  --color-amber: #f4b860;
 
   --font-display: var(--font-playfair), "DM Serif Display", serif;
   --font-script: var(--font-caveat), "Playfair Display", cursive;
@@ -90,14 +101,15 @@
     z-index: 2;
   }
 
-  /* Hero sky — clean navy with a warm amber glow at the horizon.
-     No more plum/burgundy middle stops. */
+  /* Main Street dusk sky — navy night settling over a lit horizon.
+     Warm peach horizon + lamp-glow spills up, streetlamp/window glow
+     concentrates near the bottom. A few scattered stars, NOT a galaxy. */
   .sky-dawn {
     background:
-      radial-gradient(120% 80% at 50% 115%, rgba(232, 155, 58, 0.34) 0%, rgba(200, 55, 45, 0.14) 30%, transparent 58%),
-      radial-gradient(80% 60% at 80% 25%, rgba(232, 193, 74, 0.14), transparent 60%),
-      radial-gradient(90% 70% at 15% 30%, rgba(90, 167, 208, 0.10), transparent 60%),
-      linear-gradient(180deg, #0b1424 0%, #0f1a30 40%, #182745 75%, #22314e 100%);
+      radial-gradient(120% 80% at 50% 115%, rgba(244, 184, 96, 0.42) 0%, rgba(232, 168, 124, 0.22) 30%, transparent 62%),
+      radial-gradient(60% 40% at 20% 90%, rgba(255, 217, 125, 0.22), transparent 55%),
+      radial-gradient(60% 40% at 80% 90%, rgba(255, 217, 125, 0.22), transparent 55%),
+      linear-gradient(180deg, #0f1a35 0%, #1b2a4e 35%, #3d4e7a 75%, #e8a87c 100%);
   }
 
   /* Soft amber haze behind the town silhouette */
@@ -207,6 +219,22 @@
     color: #e8c14a;
   }
 
+  /* Word-safe line clamp — prevents the "...personalize.." mid-word cut.
+     Combine with `title={fullText}` + `aria-label` on the element so
+     the full text is still available to hover + screen readers. */
+  .title-clamp-2,
+  .title-clamp-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: auto;
+    text-overflow: ellipsis;
+  }
+  .title-clamp-2 { -webkit-line-clamp: 2; }
+  .title-clamp-3 { -webkit-line-clamp: 3; }
+
   /* Pull quote — editorial set-piece for prose sections.
      Left brass bar, oversized display type, attribution line. */
   .pull-quote {
@@ -263,12 +291,15 @@
   /* Scroll-journey track height — tuned per device.
      Longer on desktop for breathing room; tighter on mobile so users don't
      have to scroll for ten years on a phone. */
-  .journey-track { height: 760vh; }
+  /* Journey is no longer the whole home page — it's a mid-page narrative
+     section. Short enough not to exhaust users, tall enough for each act
+     to breathe. */
+  .journey-track { height: 280vh; }
   @media (max-width: 640px) {
-    .journey-track { height: 520vh; }
+    .journey-track { height: 220vh; }
   }
   @media (min-width: 641px) and (max-width: 1024px) {
-    .journey-track { height: 640vh; }
+    .journey-track { height: 250vh; }
   }
 
   /* Mobile perf — thin out the starfield and embers so phones don't chug.
