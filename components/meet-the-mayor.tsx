@@ -86,15 +86,20 @@ export function MeetTheMayor() {
                   className={`absolute ${pos} h-2 w-2 rounded-full bg-brass shadow-[inset_0_1px_0_rgba(255,255,255,0.5)]`}
                 />
               ))}
-              {/* Portrait */}
-              <div className="rounded-xl overflow-hidden bg-ink aspect-[4/5]">
+              {/* Community shot — Heath with fellow insurance pros at a
+                  PIA event. Deliberately NOT the same studio headshot
+                  that's already on the hero; this photo earns the bio's
+                  "one handshake at a time" closing beat. */}
+              <div className="rounded-xl overflow-hidden bg-ink aspect-square">
                 {hasHeadshot ? (
                   <Image
-                    src={content.assets.headshot}
-                    alt="Heath Shearon, host of the Insurance Town Podcast"
-                    width={640}
-                    height={800}
+                    src="/heath-friends.jpg"
+                    alt="Heath Shearon backstage with fellow insurance pros at a PIA event"
+                    width={1051}
+                    height={995}
+                    sizes="(max-width: 1024px) 100vw, 480px"
                     className="h-full w-full object-cover"
+                    style={{ objectPosition: "50% 30%" }}
                   />
                 ) : (
                   <div className="h-full w-full grid place-items-center bg-[radial-gradient(closest-side,rgba(217,131,58,0.25),rgba(11,18,32,0.8))] text-center p-6">
