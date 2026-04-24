@@ -7,26 +7,27 @@ export function TownSilhouette({ className = "" }: { className?: string }) {
       className={className}
     >
       <defs>
+        {/* Dusk-navy silhouettes against peach horizon — Main Street, not cosmic plum */}
         <linearGradient id="far-bldg" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0" stopColor="#2a1828" />
-          <stop offset="1" stopColor="#140814" />
+          <stop offset="0" stopColor="#1b2a4e" />
+          <stop offset="1" stopColor="#0c1428" />
         </linearGradient>
         <linearGradient id="mid-bldg" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0" stopColor="#1a0e16" />
-          <stop offset="1" stopColor="#0a0509" />
+          <stop offset="0" stopColor="#142037" />
+          <stop offset="1" stopColor="#070c1a" />
         </linearGradient>
         <linearGradient id="near-bldg" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0" stopColor="#0d0710" />
-          <stop offset="1" stopColor="#050306" />
+          <stop offset="0" stopColor="#0c1428" />
+          <stop offset="1" stopColor="#040810" />
         </linearGradient>
         <radialGradient id="lamp" cx="50%" cy="50%" r="50%">
-          <stop offset="0" stopColor="#ffd48a" stopOpacity="0.9" />
-          <stop offset="55%" stopColor="#ff9a4d" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#ff9a4d" stopOpacity="0" />
+          <stop offset="0" stopColor="#ffd97d" stopOpacity="0.95" />
+          <stop offset="55%" stopColor="#f4b860" stopOpacity="0.45" />
+          <stop offset="100%" stopColor="#f4b860" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="window-glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0" stopColor="#ffd48a" />
-          <stop offset="100%" stopColor="#d9833a" />
+          <stop offset="0" stopColor="#ffd97d" />
+          <stop offset="100%" stopColor="#e8a87c" />
         </radialGradient>
       </defs>
 
@@ -81,12 +82,12 @@ export function TownSilhouette({ className = "" }: { className?: string }) {
         <rect x="970" y="170" width="80" height="150" />
         <rect x="960" y="160" width="100" height="14" />
         <polygon points="970,160 1010,118 1050,160" />
-        <circle cx="1010" cy="210" r="20" fill="#f6efdd" />
-        <circle cx="1010" cy="210" r="17" fill="#1a0e16" />
+        <circle cx="1010" cy="210" r="20" fill="#fbf3e0" />
+        <circle cx="1010" cy="210" r="17" fill="#142037" />
         {/* Clock hands at ~10:10 */}
-        <line x1="1010" y1="210" x2="997" y2="199" stroke="#e3c27a" strokeWidth="2" strokeLinecap="round" />
-        <line x1="1010" y1="210" x2="1023" y2="201" stroke="#e3c27a" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="1010" cy="210" r="1.8" fill="#e3c27a" />
+        <line x1="1010" y1="210" x2="997" y2="199" stroke="#d4a84b" strokeWidth="2" strokeLinecap="round" />
+        <line x1="1010" y1="210" x2="1023" y2="201" stroke="#d4a84b" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="1010" cy="210" r="1.8" fill="#d4a84b" />
 
         {/* Shop row right */}
         <rect x="1080" y="220" width="150" height="100" />
@@ -135,7 +136,7 @@ export function TownSilhouette({ className = "" }: { className?: string }) {
 
       {/* Flag on clock tower */}
       <g>
-        <line x1="1010" y1="118" x2="1010" y2="98" stroke="#c9a24a" strokeWidth="1.5" />
+        <line x1="1010" y1="118" x2="1010" y2="98" stroke="#d4a84b" strokeWidth="1.5" />
         <polygon points="1010,98 1028,102 1010,108" fill="#c8372d" />
       </g>
 
@@ -179,18 +180,18 @@ export function TownSilhouette({ className = "" }: { className?: string }) {
         ))}
       </g>
 
-      {/* Lampposts with glow */}
+      {/* Lampposts with warm glow */}
       {[230, 560, 880, 1180, 1440].map((x, i) => (
         <g key={i}>
-          <circle cx={x} cy="255" r="38" fill="url(#lamp)" />
-          <rect x={x - 1.5} y="255" width="3" height="65" fill="#1a0e16" />
-          <circle cx={x} cy="252" r="4" fill="#ffd48a" />
-          <circle cx={x} cy="252" r="6" fill="#ffd48a" opacity="0.4" />
+          <circle cx={x} cy="255" r="40" fill="url(#lamp)" />
+          <rect x={x - 1.5} y="255" width="3" height="65" fill="#070c1a" />
+          <circle cx={x} cy="252" r="4" fill="#ffd97d" />
+          <circle cx={x} cy="252" r="7" fill="#f4b860" opacity="0.5" />
         </g>
       ))}
 
-      {/* Rooftop silhouettes of trees */}
-      <g fill="#080509">
+      {/* Rooftop tree silhouettes */}
+      <g fill="#050812">
         <circle cx="760" cy="268" r="14" />
         <circle cx="775" cy="262" r="11" />
         <circle cx="745" cy="264" r="10" />

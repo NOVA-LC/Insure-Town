@@ -24,21 +24,21 @@ export function MeetTheMayor() {
       ref={ref}
       className="relative py-28 md:py-36 border-t border-brass/15 overflow-hidden"
     >
-      {/* Warm spotlight */}
+      {/* Streetlamp warmth — Main Street amber, not cosmic ember */}
       <div
         aria-hidden="true"
-        className="absolute -top-40 -left-40 h-[40rem] w-[40rem] rounded-full opacity-30 pointer-events-none"
+        className="absolute -top-40 -left-40 h-[40rem] w-[40rem] rounded-full opacity-40 pointer-events-none"
         style={{
           background:
-            "radial-gradient(closest-side, rgba(217,131,58,0.3), transparent 70%)",
+            "radial-gradient(closest-side, rgba(244,184,96,0.32), transparent 70%)",
         }}
       />
       <div
         aria-hidden="true"
-        className="absolute -bottom-40 -right-20 h-[36rem] w-[36rem] rounded-full opacity-20 pointer-events-none"
+        className="absolute -bottom-40 -right-20 h-[36rem] w-[36rem] rounded-full opacity-30 pointer-events-none"
         style={{
           background:
-            "radial-gradient(closest-side, rgba(200,55,45,0.35), transparent 70%)",
+            "radial-gradient(closest-side, rgba(255,217,125,0.25), transparent 70%)",
         }}
       />
 
@@ -48,13 +48,13 @@ export function MeetTheMayor() {
           style={{ rotate, y }}
           className="lg:col-span-5 relative mx-auto max-w-sm"
         >
-          {/* Back glow */}
+          {/* Back glow — warm lamp amber */}
           <div
             aria-hidden="true"
-            className="absolute -inset-6 blur-3xl opacity-50"
+            className="absolute -inset-6 blur-3xl opacity-55"
             style={{
               background:
-                "radial-gradient(closest-side, rgba(201,162,74,0.35), transparent)",
+                "radial-gradient(closest-side, rgba(212,168,75,0.4), transparent)",
             }}
           />
           {/* Outer brass frame — Main Street gold, not old cosmic brass */}

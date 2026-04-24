@@ -31,7 +31,7 @@ export default function CitizenPage() {
               className="relative rounded-3xl p-[3px] max-w-xs mx-auto md:mx-0"
               style={{
                 background:
-                  "linear-gradient(135deg, #f6d97a 0%, #e8c14a 45%, #9e7b1c 100%)",
+                  "linear-gradient(135deg, #f4d07a 0%, #d4a84b 45%, #8a6a1a 100%)",
               }}
             >
               <div className="photo-editorial relative rounded-[22px] overflow-hidden bg-ink aspect-square">

@@ -23,6 +23,7 @@ import {
 import { content } from "@/lib/content";
 import { Footer } from "./footer";
 import { Newsletter } from "./newsletter";
+import { AppleBadge, SpotifyBadge, YouTubeBadge } from "./platform-badges";
 
 /**
  * The Insurance Town scroll journey.
@@ -1206,42 +1207,32 @@ function ActTwoOverlay({ progress }: { progress: MotionValue<number> }) {
 function ActThreeOverlay({ progress }: { progress: MotionValue<number> }) {
   return (
     <ActOverlay progress={progress} range={[0.34, 0.38, 0.48, 0.54]} align="top">
-      <span className="ornament">On the air</span>
-      <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02]">
-        <span className="brass-engraved">329 episodes. One town.</span>
-      </h2>
-      <p className="mx-auto mt-4 max-w-xl text-parchment/75">
-        Every episode is a real conversation with someone actually doing the
-        work — agents, carriers, founders, and the folks they serve.
-      </p>
-      <div className="mt-8 flex flex-wrap justify-center gap-3">
-        <a
-          href={content.latest_episode.apple}
-          target="_blank"
-          rel="noreferrer"
-          className="btn-brass inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium"
-        >
-          <Apple className="h-4 w-4" /> Apple
-        </a>
-        <a
-          href={content.latest_episode.spotify}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 rounded-full bg-[#1DB954] text-black px-5 py-3 text-sm font-medium"
-        >
-          <Music className="h-4 w-4" /> Spotify
-        </a>
-        <a
-          href={content.latest_episode.youtube}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 rounded-full bg-[#FF0000] text-white px-5 py-3 text-sm font-medium"
-        >
-          <Youtube className="h-4 w-4" /> YouTube
-        </a>
+      {/* Subtle dark halo so text stays legible over the brass key */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-[55vh] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(70% 70% at 50% 0%, rgba(11,20,40,0.72) 0%, rgba(11,20,40,0.4) 45%, transparent 80%)",
+        }}
+      />
+      <div className="relative">
+        <span className="ornament">On the air</span>
+        <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02]">
+          <span className="brass-engraved">329 episodes. One town.</span>
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-parchment/85 drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+          Every episode is a real conversation with someone actually doing the
+          work — agents, carriers, founders, and the folks they serve.
+        </p>
+      </div>
+      <div className="relative mt-8 flex flex-wrap justify-center gap-3">
+        <AppleBadge href={content.latest_episode.apple} size="sm" />
+        <SpotifyBadge href={content.latest_episode.spotify} size="sm" />
+        <YouTubeBadge href={content.latest_episode.youtube} size="sm" />
         <Link
           href="/podcast"
-          className="inline-flex items-center gap-2 rounded-full border border-brass/40 px-5 py-3 text-sm font-medium hover:bg-white/5"
+          className="inline-flex items-center min-h-11 gap-2 rounded-full border border-brass/40 px-5 text-sm font-medium hover:bg-white/5"
         >
           The archive <ArrowRight className="h-4 w-4" />
         </Link>
