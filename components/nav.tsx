@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { label: "Consulting", href: "/consulting" },
   { label: "Sponsor", href: "/sponsor" },
   { label: "About", href: "/about" },
-  { label: "Become a Citizen", href: "/citizen" },
+  { label: "Renew Your Citizenship", href: "/citizen" },
 ];
 
 const primaryCta = {
